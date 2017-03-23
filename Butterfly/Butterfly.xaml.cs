@@ -31,7 +31,7 @@ namespace Butterfly
         private readonly double Accelerate = 0.5;
         private readonly double AngleStep = 5;
         private double Angle = 0;
-        private double Speed = 0;
+        private double speed = 0;
         // location
         public double LocationX { get; set; }
         public double LocationY { get; set; }
@@ -67,6 +67,24 @@ namespace Butterfly
         }
 
         // Move
+        public void Move()
+        {
+            // more speed
+            speed += Accelerate;
+            if (speed > MaxSpeed) speed = MaxSpeed;
+
+            // update location values(with angle and speed)
+            LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
+            LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
+
+            // update in canvas
+            SetLocation(); 
+        }
         // Rotation
+        public void Rotate( int direction)
+        {
+            Angle += direction * AngleStep; // -1 or 1  => -5 or 5 
+            ButterflyRotateAngle.Angle = Angle; 
+        }
     }
 }
