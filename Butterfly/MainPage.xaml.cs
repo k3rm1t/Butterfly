@@ -22,9 +22,21 @@ namespace Butterfly
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        // Butterfly 
+        private Butterfly butterfly;
+
+        // Flowers
         public MainPage()
         {
             this.InitializeComponent();
+            // add one butterfly
+            butterfly = new Butterfly
+            {
+                LocationX = Mycanvas.Width / 2,
+                LocationY = Mycanvas.Height / 2
+            };
+            Mycanvas.Children.Add(butterfly);
+           
         }
     }
 }
